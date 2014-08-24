@@ -1,0 +1,38 @@
+@import "colors.less";
+
+body {
+    background-image: url('/assets/images/club-background.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: auto;
+}
+
+.auth-box {
+    margin:0 auto;
+    margin-top: 15%;
+    max-width: 300px;
+
+    padding: 5px;
+    border-style: solid;
+    border-color: @ofc-dark-blue;
+    border-width: 4px;
+    border-radius: 4px;
+    background-color: @color-white;
+
+    .logo {
+        float: left;
+    }
+
+    .login {
+        float: right;
+        max-width: 200px;
+    }
+
+    .logged-out {
+        float: right;
+        max-width:175px;
+    }
+}

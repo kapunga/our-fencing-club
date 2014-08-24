@@ -1,0 +1,18 @@
+@()
+
+@bare("Logged Out") {
+    <div class="auth-box container">
+        <div class="logo">
+            <img src="@routes.Assets.at("images/club.jpg")" alt="Club Logo" height="182" width="100">
+        </div>
+        <div class="login">
+            <div class="logged-out-msg">
+                <h3>You have been<br>logged out.</h3>
+            </div>
+            <div class="in-again">
+                <a href="/login"><button>Login</button></a>
+            </div>
+        </div>
+    </div>
+
+}

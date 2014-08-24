@@ -1,0 +1,22 @@
+@(loginForm: Form[UserLoginData])
+
+@import helper._
+
+@headerScripts() = {
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/auth.css")">
+}
+
+@bare("Login") {
+    <div class="auth-box container">
+        <div class="logo">
+            <img src="@routes.Assets.at("images/club.jpg")" alt="Club Logo" height="182" width="100">
+        </div>
+        <div class="login">
+            @helper.form(action = routes.Auth.doLogin(), 'class -> "form-signin") {
+                @inputText(loginForm("Username"), 'class -> "username-input", 'placeholder -> "Username")
+                @inputPassword(loginForm("Password"), 'class -> "password-input", 'placeholder -> "Password")
+                <button type="submit">Login</button>
+            }
+        </div>
+    </div>
+}

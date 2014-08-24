@@ -1,7 +1,7 @@
-@(message: String)
+@(userInfo: UserScreenInfo)
 
-@main("Welcome to Play") {
-
-    @play20.welcome(message)
-
+@frame("OFC Members", userInfo) {
+    <div>
+        Welcome to the Olympia Fencing Club members page.
+    </div>
 }
