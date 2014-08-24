@@ -5,4 +5,4 @@ Initially this is going to be for Olympia Fencing Center, but once it is mature,
 
 Author
 =====================================
-Paul J Thordarson kapunga@gmail.com
+Paul J Thordarson paul.j.thordarson@gmail.com
