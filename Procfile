@@ -1,0 +1,1 @@
+web: target/universal/stage/bin/OurFencingClub -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.club.driver=org.postgresql.Driver -Ddb.club.url=${DATABASE_URL}
