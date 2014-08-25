@@ -3,14 +3,13 @@
 # --- !Ups
 
 CREATE TABLE site_user (
-    uid bigint NOT NULL AUTO_INCREMENT,
+    uid SERIAL PRIMARY KEY,
     username varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
     active boolean NOT NULL,
     admin boolean NOT NULL,
-    is_coach boolean NOT NULL,
-    PRIMARY KEY (uid)
+    is_coach boolean NOT NULL
 );
 
 # --- !Downs
