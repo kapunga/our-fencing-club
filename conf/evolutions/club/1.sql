@@ -2,7 +2,7 @@
 
 # --- !Ups
 
-CREATE TABLE user (
+CREATE TABLE site_user (
     uid bigint(20) NOT NULL AUTO_INCREMENT,
     username varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
@@ -15,4 +15,4 @@ CREATE TABLE user (
 
 # --- !Downs
 
-DROP TABLE user;
+DROP TABLE site_user;

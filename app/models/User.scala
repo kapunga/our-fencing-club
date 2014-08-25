@@ -76,7 +76,7 @@ object User {
       case Some(user) => None
       case None => {
         DB.withConnection(DB_NAME) { implicit c =>
-          SQL("INSERT INTO user (username, email, password, active, admin, is_coach) "
+          SQL("INSERT INTO site_user (username, email, password, active, admin, is_coach) "
               + "VALUES ({username}, {email}, {password}, {active}, {admin}, {isCoach})").on(
             'username -> user.username,
             'email -> user.email,
@@ -103,7 +103,7 @@ object User {
       case None => None
       case Some(user) => {
         DB.withConnection(DB_NAME) { implicit c =>
-          SQL("UPDATE user SET (email, password, active, admin, is_coach) "
+          SQL("UPDATE site_user SET (email, password, active, admin, is_coach) "
               + "VALUES ({email}, {password}, {active}, {admin}, {isCoach}) "
               + "WHERE uid = {uid}").on(
               'uid -> user.uid,
@@ -128,7 +128,7 @@ object User {
    */
   def delete(uid: Long) = {
     DB.withConnection(DB_NAME) { implicit c =>
-      SQL("DELETE FROM user WHERE uid = {uid}").on('uid -> uid).executeUpdate()
+      SQL("DELETE FROM site_user WHERE uid = {uid}").on('uid -> uid).executeUpdate()
     }
   }
 
@@ -140,7 +140,7 @@ object User {
    */
   def findByName(username: String): Option[User] = {
     DB.withConnection(DB_NAME) { implicit c =>
-      SQL("SELECT * FROM user WHERE username = {username}").on('username -> username).singleOpt(user)
+      SQL("SELECT * FROM site_user WHERE username = {username}").on('username -> username).singleOpt(user)
     }
   }
 
@@ -152,7 +152,7 @@ object User {
    */
   def findById(uid: Long): Option[User] = {
     DB.withConnection(DB_NAME) { implicit c =>
-      SQL("SELECT * FROM user WHERE uid = {uid}").on('uid -> uid).singleOpt(user)
+      SQL("SELECT * FROM site_user WHERE uid = {uid}").on('uid -> uid).singleOpt(user)
     }
   }
 
@@ -163,7 +163,7 @@ object User {
    */
   def findAllAdmins: List[User] = {
     DB.withConnection(DB_NAME) { implicit c =>
-      SQL("SELECT * FROM user WHERE admin = true").as(user *)
+      SQL("SELECT * FROM site_user WHERE admin = true").as(user *)
     }
   }
 
@@ -174,7 +174,7 @@ object User {
    */
   def findAllCoaches: List[User] = {
     DB.withConnection(DB_NAME) { implicit c =>
-      SQL("SELECT * FROM user WHERE is_coach = true").as(user *)
+      SQL("SELECT * FROM site_user WHERE is_coach = true").as(user *)
     }
   }
 
@@ -185,7 +185,7 @@ object User {
    */
   def findAllInactiveUsers: List[User] = {
     DB.withConnection(DB_NAME) { implicit c =>
-      SQL("SELECT * FROM user WHERE active = false").as(user *)
+      SQL("SELECT * FROM site_user WHERE active = false").as(user *)
     }
   }
 }
