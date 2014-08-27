@@ -1,4 +1,4 @@
-@()
+@(title: String, next: Int)(content: Html)
 
 <!DOCTYPE html>
 <html>
@@ -16,16 +16,19 @@
                 <img src="@routes.Assets.at("images/announce-logo.jpg")" alt="Club Logo">
             </div>
             <div id="msg-text">
-                <h2><center>Welcome to the Olympia Fencing Center Open House!</center></h2>
-                <p>Feel free to look around and observe.  All our fencers are very friendly and would be happy to explain what is going on, so don't be shy about asking!</p>
+                <h2><center>@title</center></h2>
+                @content
             </div>
         </div>
 
-        <!--script type="text/javascript">
-            var redirectURL ='/announce'; // edit this value for the next page
+        <!--script>
+            alert(window.innerWidth + " x " + window.innerHeight)
+        </script -->
+        <script type="text/javascript">
+            var redirectURL ='@("/announce/" + next)'; // edit this value for the next page
             var redirectDelayInSeconds = 15; // edit this value after how many seconds
             var d = redirectDelayInSeconds * 1000;
             window.setTimeout ('parent.location.replace(redirectURL)', d);
-        </script-->
+        </script>
     </body>
 </html>

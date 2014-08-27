@@ -2,6 +2,6 @@ package controllers
 
 import play.api.mvc.Controller
 
-object AnnounceContent extends Controller {
+object AnnounceEdit extends Controller {
 
 }
