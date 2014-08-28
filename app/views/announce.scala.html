@@ -1,6 +1,5 @@
 @(title: String, next: Int)(content: Html)
 
-<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/announce.min.css")">
@@ -12,8 +11,8 @@
             <div id="header">
                 <h1>OFC Announcements</h1>
             </div>
-            <div id="olympia-logo">
-                <img src="@routes.Assets.at("images/announce-logo.jpg")" alt="Club Logo">
+            <div class="club-logo">
+                <img src="@routes.Assets.at("images/announce-logo.jpg")" alt="Club Logo" width="440px">
             </div>
             <div id="msg-text">
                 <h2><center>@title</center></h2>
