@@ -4,6 +4,7 @@ import anorm._
 import anorm.SqlParser._
 import play.api.db.DB
 import play.api.Play.current
+import org.mindrot.jbcrypt.BCrypt
 
 /**
  * This case class contains basic user information for logging in, administrating,
@@ -25,7 +26,13 @@ case class User(username: String, email: String, password: String, uid: Long = -
    * @param testPassword
    * @return
    */
-  def checkPassword(testPassword: String): Boolean = testPassword == password
+  def checkPassword(testPassword: String): Boolean = {
+    if (uid == -1) {
+      testPassword == password
+    } else {
+      BCrypt.checkpw(testPassword, password)
+    }
+  }
 
   def screenInfo: UserScreenInfo = new UserScreenInfo(username, admin, isCoach)
 }
@@ -80,7 +87,7 @@ object User {
               + "VALUES ({username}, {email}, {password}, {active}, {admin}, {isCoach})").on(
             'username -> user.username,
             'email -> user.email,
-            'password -> user.password,
+            'password -> BCrypt.hashpw(user.password, BCrypt.gensalt()),
             'active -> user.active,
             'admin -> user.admin,
             'isCoach -> user.isCoach

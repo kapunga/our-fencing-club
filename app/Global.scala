@@ -14,7 +14,8 @@ object Global extends GlobalSettings {
 
       User.create(kapunga) match {
         case None => Logger.error("Couldn't create an admin, site has no admins.")
-        case Some(newAdmin) => Logger.info("Created new admin: " + newAdmin.username + " uid: " + newAdmin.uid)
+        case Some(newAdmin) => Logger.info("Created new admin: " + newAdmin.username + " uid: "
+                                          + newAdmin.uid + " password: " + newAdmin.password)
       }
     } else {
       User.findAllAdmins.foreach(user => Logger.info("Found admin: " + user.username + " uid: " + user.uid))
