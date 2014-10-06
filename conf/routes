@@ -11,6 +11,11 @@ POST    /login                      controllers.Auth.doLogin
 GET     /logout                     controllers.Auth.logout
 GET     /announce/:ord              controllers.AnnounceServe.nextScreen(ord: Int)
 GET     /announce                   controllers.AnnounceServe.firstScreen
+GET     /users                      controllers.UserManager.userManagement
+GET     /signup                     controllers.UserManager.signupPage
+POST    /signup                     controllers.UserManager.doSignup
+
+GET     /inactive                   controllers.UserManager.getInactiveUserCount
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

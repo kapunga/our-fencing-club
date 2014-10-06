@@ -1,0 +1,22 @@
+@(loginForm: Form[UserSignupData])
+
+@import helper._
+
+@bare("Sign Up") {
+<div class="signup container">
+    @helper.form(action = routes.UserManager.doSignup(), 'class -> "form-signin") {
+        <div class="signup-box">
+            <div class="signup-info">
+                @inputText(loginForm("Username"), 'class -> "username-input", 'placeholder -> "Username")
+                @inputText(loginForm("Email"), 'class -> "email-input", 'placeholder -> "Email Address")
+                @inputText(loginForm("Verify Email"), 'class -> "email-input", 'placeholder -> "Verify Email")
+            </div>
+            <div class="signup-password">
+                @inputPassword(loginForm("Password"), 'class -> "password-input", 'placeholder -> "Password")
+                @inputPassword(loginForm("Verify Password"), 'class -> "password-input", 'placeholder -> "Verify Password")
+                <button type="submit">Sign Up</button>
+            </div>
+        </div>
+    }
+</div>
+}

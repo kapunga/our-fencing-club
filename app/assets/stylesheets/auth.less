@@ -1,5 +1,9 @@
 @import "colors.less";
 
+html {
+    height: 100%;
+}
+
 body {
     background-image: url('/assets/images/club-background.jpg');
     -webkit-background-size: cover;
@@ -8,6 +12,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     overflow: auto;
+    height: 100%;
 }
 
 .auth-box {
@@ -34,5 +39,31 @@ body {
     .logged-out {
         float: right;
         max-width:175px;
+    }
+}
+
+.signup {
+    margin:0 auto;
+    margin-top: 15%;
+    display: inline-box;
+    max-width: 4in;
+
+    padding: 5px;
+    border-style: solid;
+    border-color: @ofc-dark-blue;
+    border-width: 4px;
+    border-radius: 4px;
+    background-color: @color-white;
+}
+
+.signup-box {
+    .signup-info {
+        float: left;
+        padding: 10px;
+    }
+
+    .signup-password {
+        float: right
+        padding: 10px;
     }
 }

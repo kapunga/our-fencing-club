@@ -17,14 +17,20 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
+                    <li class="active"><a href="#">Ladder</a></li>
+                    <li><a href="#">Tournaments</a></li>
                     @if(userInfo.isAdmin) {
                     <li><a href="#">Announcement Board</a></li>
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
+                    @if(userInfo.isAdmin) {
+                    <li>
+                        <a href="/users">Users
+                            <span id="userNum" class="numberCircle">&nbsp 0 &nbsp</span>
+                        </a>
+                    </li>
+                    }
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">@userInfo.username<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -40,4 +46,7 @@
     <div id="main-content">
         @content
     </div>
+    <script>
+        decorateNumber("userNum", "inactive")
+    </script>
 }

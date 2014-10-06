@@ -26,7 +26,12 @@ object Auth extends Controller {
       formWithErrors => BadRequest(views.html.login(formWithErrors)),
       userLoginData => {
         User.findByName(userLoginData.username) match  {
-          case Some(user) => Ok(views.html.index(user.screenInfo)).withSession((Security.username, user.username))
+          case Some(user) => {
+            user.active match {
+              case(true) => Ok(views.html.index(user.screenInfo)).withSession((Security.username, user.username))
+              case(false) => Ok(views.html.pending())
+            }
+          }
           case None => {
             Logger.error("Found user: " + userLoginData.username + " but couldn't log them in.")
             InternalServerError("There is an error logging you in, please try again.")

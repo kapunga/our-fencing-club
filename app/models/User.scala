@@ -38,6 +38,14 @@ case class User(username: String, email: String, password: String, uid: Long = -
 }
 
 /**
+ *
+ * @param username
+ * @param isAdmin
+ * @param isCoach
+ */
+case class UserScreenInfo(username: String, isAdmin: Boolean, isCoach: Boolean)
+
+/**
  * The Companion Object/DAO for the Users
  */
 object User {

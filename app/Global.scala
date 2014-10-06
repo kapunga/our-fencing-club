@@ -1,7 +1,15 @@
 import models.{Announcement, User}
 import play.api._
+import org.kapunga.fredconnect.AskFredClient
 
 object Global extends GlobalSettings {
+  val bootAdmins = List("kapunga@gmail.com")
+  val bootCoaches = List("daniel.hondor@gmail.com")
+
+  val fredKey = "4ce7dab47e291bd2e85fb154f9b5f20b"
+  val clubId = 6859
+
+  val askFredClient = new AskFredClient(fredKey)
 
   override def onStart(app: Application) {
     Logger.info("Application has started")
@@ -64,6 +72,12 @@ object Global extends GlobalSettings {
         } 
       }
     }
+
+    Logger.info("Fetching club members...")
+
+    val clubFencers = askFredClient.getFencersFromClub(clubId)
+
+    clubFencers.foreach(fencer => println(s"Found fencer ${fencer.person.firstName} ${fencer.person.lastName}"))
   }
 
   override def onStop(app: Application) {
