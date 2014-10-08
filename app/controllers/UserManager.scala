@@ -6,7 +6,7 @@ import play.api.data.Forms._
 import play.api.libs.json.Json._
 import models.User
 
-object UserManager extends Controller {
+object UserManager extends Controller with Secured {
   val signupForm = Form(
     mapping(
       "Username" -> nonEmptyText,
@@ -36,7 +36,9 @@ object UserManager extends Controller {
     )
   }
 
-  def userManagement = TODO
+  def userManagement = withUser { user => implicit request =>
+    Ok(views.html.users(user.screenInfo))
+  }
 
   def getInactiveUserCount = Action {
     val inactives = User.findAllInactiveUsers

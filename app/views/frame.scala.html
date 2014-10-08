@@ -1,4 +1,4 @@
-@(title: String, userInfo: UserScreenInfo)(content: Html)
+@(title: String, userInfo: UserScreenInfo, navId: String)(content: Html)
 
 @main(title)(Html("")) {
     <nav class="navbar navbar-default" role="navigation">
@@ -17,24 +17,40 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Ladder</a></li>
-                    <li><a href="#">Tournaments</a></li>
+                    <li id="club-info"><a href="#">Club Info</a></li>
+                    <li id="my-bouts"><a href="#">My Bouts</a></li>
+                    <li id="tournaments"><a href="#">Tournaments</a></li>
+                    <li id="club-ladder"><a href="#">Club Ladder</a></li>
+
                     @if(userInfo.isAdmin) {
-                    <li><a href="#">Announcement Board</a></li>
+                    <li id="announcement-board"><a href="#">Announcement Board</a></li>
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if(userInfo.isAdmin) {
-                    <li>
+                    <li id="users">
                         <a href="/users">Users
-                            <span id="userNum" class="numberCircle">&nbsp 0 &nbsp</span>
+                            <span id="userNum" class="numberCircle hidden">&nbsp 0 &nbsp</span>
                         </a>
                     </li>
                     }
+                    @if(userInfo.isCoach || userInfo.isAdmin) {
+                    <li id="students">
+                        <a href="#">Students</a>
+                    </li>
+                    }
+
+                    <li id="members">
+                        <a href="#">Members</a>
+                    </li>
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">@userInfo.username<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Preferences</a></li>
+                            <li><a href="#">My Profile</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Feedback</a></li>
                             <li class="divider"></li>
                             <li><a href="/logout">Logout</a></li>
                         </ul>
@@ -49,4 +65,9 @@
     <script>
         decorateNumber("userNum", "inactive")
     </script>
+    @if(navId != "") {
+    <script>
+        setActive( "@navId" )
+    </script>
+    }
 }

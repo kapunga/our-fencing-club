@@ -75,9 +75,9 @@ object Global extends GlobalSettings {
 
     Logger.info("Fetching club members...")
 
-    val clubFencers = askFredClient.getFencersFromClub(clubId)
+    //val clubFencers = askFredClient.getFencersFromClub(clubId)
 
-    clubFencers.foreach(fencer => println(s"Found fencer ${fencer.person.firstName} ${fencer.person.lastName}"))
+    //clubFencers.foreach(fencer => println(s"Found fencer ${fencer.person.firstName} ${fencer.person.lastName}"))
   }
 
   override def onStop(app: Application) {

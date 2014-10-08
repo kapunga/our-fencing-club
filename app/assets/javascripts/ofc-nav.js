@@ -10,3 +10,7 @@ function decorateNumber( id, path ) {
         }
     });
 }
+
+function setActive( id ) {
+    $("#" + id).addClass("active");
+}

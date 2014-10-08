@@ -11,7 +11,7 @@ libraryDependencies ++= Seq(
   "postgresql" % "postgresql" % "9.1-901-1.jdbc4",
   "org.mindrot" % "jbcrypt" % "0.3m",
   "com.stackmob" %% "newman" % "1.3.5",
-  "org.kapunga" %% "fredconnect" % "0.3.0-SNAPSHOT"
+  "org.kapunga" %% "fredconnect" % "0.3.1-SNAPSHOT"
 )
 
 play.Project.playScalaSettings

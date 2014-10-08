@@ -13,7 +13,9 @@ CREATE TABLE fred_fencer (
     birth_year integer,
     div_id integer,
     club_ids varchar(32),
-    ratings varchar(32)
+    f_rating varchar(6),
+    e_rating varchar(6),
+    s_rating varchar(6)
 );
 
 # --- !Downs
